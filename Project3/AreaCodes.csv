@@ -1,0 +1,399 @@
+Area code (as of 02/18/2018),Location,Timezone
+201,New Jersey,E
+202,Washington D.C.,E
+203,Connecticut,E
+204,Canada - Manitoba,C
+205,Alabama,C
+206,Washington,P
+207,Maine,E
+208,Idaho,M/P
+209,California,P
+210,Texas,C
+212,New York,E
+213,California,P
+214,Texas,C
+215,Pennsylvania,E
+216,Ohio,E
+217,Illinois,C
+218,Minnesota,C
+219,Indiana,E/C
+220,Ohio,E
+223,Pennsylvania,E
+224,Illinois,C
+225,Louisiana,C
+226,Canada - Ontario,E
+228,Mississippi,C
+229,Georgia,E
+231,Michigan,E
+234,Ohio,E
+236,Canada - British Columbia,P
+239,Florida,E
+240,Maryland,E
+242,Bahamas,E
+246,Barbados,A
+248,Michigan,E
+249,Canada - Ontario,E
+250,Canada - British Columbia,P
+251,Alabama,C
+252,North Carolina,E
+253,Washington,P
+254,Texas,C
+256,Alabama,C
+260,Indiana,E
+262,Wisconsin,C
+264,Anguilla,A
+267,Pennsylvania,E
+268,Antigua & Barbuda,A
+269,Michigan,E
+270,Kentucky,E/C
+272,Pennsylvania,E
+276,Virginia,E
+281,Texas,C
+284,British Virgin Islands,A
+289,Canada - Ontario,E
+301,Maryland,E
+302,Delaware,E
+303,Colorado,M
+304,West Virginia,E
+305,Florida,E
+306,Canada - Saskatchewan,C
+307,Wyoming,M
+308,Nebraska,CM
+309,Illinois,C
+310,California,P
+312,Illinois,C
+313,Michigan,E
+314,Missouri,C
+315,New York,E
+316,Kansas,C
+317,Indiana,E
+318,Louisiana,C
+319,Iowa,C
+320,Minnesota,C
+321,Florida,E
+323,California,P
+325,Texas,C
+330,Ohio,E
+331,Illinois,C
+332,New York,E
+334,Alabama,C
+336,North Carolina,E
+337,Louisiana,C
+339,Massachusetts,E
+340,US Virgin Islands,A
+343,Canada - Ontario,E
+345,Cayman Islands,E
+346,Texas,C
+347,New York,E
+351,Massachusetts,E
+352,Florida,E
+360,Washington,P
+361,Texas,C
+364,Kentucky,E/C
+365,Canada - Ontario,E
+380,Ohio,E
+385,Utah,M
+386,Florida,E
+401,Rhode Island,E
+402,Nebraska,C
+403,Canada - Alberta,M
+404,Georgia,E
+405,Oklahoma,C
+406,Montana,M
+407,Florida,E
+408,California,P
+409,Texas,C
+410,Maryland,E
+412,Pennsylvania,E
+413,Massachusetts,E
+414,Wisconsin,C
+415,California,P
+416,Canada - Ontario,E
+417,Missouri,C
+418,Canada - Quebec,E
+419,Ohio,E
+423,Tennessee,EC
+424,California,P
+425,Washington,P
+430,Texas,C
+431,Canada - Manitoba,C
+432,Texas,C
+434,Virginia,E
+435,Utah,M
+437,Canada - Ontario,E
+438,Canada - Quebec,E
+440,Ohio,E
+441,Bermuda,A
+442,California,P
+443,Maryland,E
+450,Canada - Quebec,E
+456,Carrier Services,-
+458,Oregon,MP
+463,Indiana,E
+469,Texas,C
+470,Georgia,E
+473,Grenada,A
+475,Connecticut,E
+478,Georgia,E
+479,Arkansas,C
+480,Arizona,M
+484,Pennsylvania,E
+500,Personal Communications Services,-
+501,Arkansas,C
+502,Kentucky,E
+503,Oregon,P
+504,Louisiana,C
+505,New Mexico,M
+506,Canada - New Brunswick,A
+507,Minnesota,C
+508,Massachusetts,E
+509,Washington,P
+510,California,P
+512,Texas,C
+513,Ohio,E
+514,Canada - Quebec,E
+515,Iowa,C
+516,New York,E
+517,Michigan,E
+518,New York,E
+519,Canada - Ontario,E
+520,Arizona,M
+530,California,P
+531,Nebraska,C
+533,Personal Communications Services,-
+534,Wisconsin,C
+539,Oklahoma,C
+540,Virginia,E
+541,Oregon,MP
+544,Personal Communications Services,-
+548,Canada - Ontario,E
+551,New Jersey,E
+559,California,P
+561,Florida,E
+562,California,P
+563,Iowa,C
+564,Washington,P
+566,Personal Communications Services,-
+567,Ohio,E
+570,Pennsylvania,E
+571,Virginia,E
+573,Missouri,C
+574,Indiana,EC
+575,New Mexico,M
+577,Personal Communications Services,-
+579,Quebec,E
+580,Oklahoma,C
+581,Quebec,E
+585,New York,E
+586,Michigan,E
+587,Canada - Alberta,M
+600,"Canada only, Non Geographic",-
+601,Mississippi,C
+602,Arizona,M
+603,New Hampshire,E
+604,Canada - British Columbia,P
+605,South Dakota,CM
+606,Kentucky,EC
+607,New York,E
+608,Wisconsin,C
+609,New Jersey,E
+610,Pennsylvania,E
+612,Minnesota,C
+613,Canada - Ontario,E
+614,Ohio,E
+615,Tennessee,C
+616,Michigan,E
+617,Massachusetts,E
+618,Illinois,C
+619,California,P
+620,Kansas,CM
+623,Arizona,M
+626,California,P
+628,California,P
+629,Tennessee,C
+630,Illinois,C
+631,New York,E
+636,Missouri,C
+639,Canada - Saskatchewan,C
+641,Iowa,C
+646,New York,E
+647,Canada - Ontario,E
+649,Turks & Caicos,E
+650,California,P
+651,Minnesota,C
+657,California,P
+660,Missouri,C
+661,California,P
+662,Mississippi,C
+664,Montserrat,A
+667,Maryland,E
+669,California,P
+670,Northern Mariana Isl.,UTC+10
+671,Guam,UTC+10
+678,Georgia,E
+680,New York,E
+681,West Virginia,E
+682,Texas,C
+684,American Samoa,SST
+700,Carrier Services,-
+701,North Dakota,CM
+702,Nevada,P
+703,Virginia,E
+704,North Carolina,E
+705,Canada - Ontario,E
+706,Georgia,E
+707,California,P
+708,Illinois,C
+709,Canada - Newfoundland,NST
+710,US Government,-
+712,Iowa,C
+713,Texas,C
+714,California,P
+715,Wisconsin,C
+716,New York,E
+717,Pennsylvania,E
+718,New York,E
+719,Colorado,M
+720,Colorado,M
+721,Sint Maarten,A
+724,Pennsylvania,E
+725,Nevada,P
+726,Texas,C
+727,Florida,E
+731,Tennessee,C
+732,New Jersey,E
+734,Michigan,E
+737,Texas,C
+740,Ohio,E
+743,North Carolina,E
+747,California,P
+754,Florida,E
+757,Virginia,E
+758,St. Lucia,A
+760,California,P
+762,Georgia,E
+763,Minnesota,C
+765,Indiana,E
+767,Dominica,A
+769,Mississippi,C
+770,Georgia,E
+772,Florida,E
+773,Illinois,C
+774,Massachusetts,E
+775,Nevada,P
+778,Canada - British Columbia,P
+779,Illinois,C
+780,Canada - Alberta,M
+781,Massachusetts,E
+782,Canada - Nova Scotia/PEI,A
+784,St. Vincent and the Grenadines,A
+785,Kansas,CM
+786,Florida,E
+787,Puerto Rico,A
+800,Toll free,-
+801,Utah,M
+802,Vermont,E
+803,South Carolina,E
+804,Virginia,E
+805,California,P
+806,Texas,C
+807,Canada - Ontario,E/C
+808,Hawaii,UTC-10
+809,Dominican Republic,E
+810,Michigan,E
+812,Indiana,E/C
+813,Florida,E
+814,Pennsylvania,E
+815,Illinois,C
+816,Missouri,C
+817,Texas,C
+818,California,P
+819,Canada - Quebec,E
+825,Canada - Alberta,M
+828,North Carolina,E
+829,Dominican Republic,E
+830,Texas,C
+831,California,P
+832,Texas,C
+833,Toll free,-
+838,New York,E
+843,South Carolina,E
+844,Toll free,-
+845,New York,E
+847,Illinois,C
+848,New Jersey,E
+849,Dominican Republic,E
+850,Florida,E/C
+854,South Carolina,E
+855,Toll free,-
+856,New Jersey,E
+857,Massachusetts,E
+858,California,P
+859,Kentucky,E
+860,Connecticut,E
+862,New Jersey,E
+863,Florida,E
+864,South Carolina,E
+865,Tennessee,E
+866,Toll free,-
+867,"Canada - NW Territories, Nunavut, Yukon",CMP
+868,Trinidad & Tobago,A
+869,St. Kitts & Nevis,A
+870,Arkansas,C
+872,Illinois,C
+873,Canada - Quebec,E
+876,Jamaica,E
+877,Toll free,-
+878,Pennsylvania,E
+888,Toll free,-
+900,Pay per call,-
+901,Tennessee,C
+902,Canada - Nova Scotia/PEI,A
+903,Texas,C
+904,Florida,E
+905,Canada - Ontario,E
+906,Michigan,EC
+907,Alaska,UTC-9
+908,New Jersey,E
+909,California,P
+910,North Carolina,E
+911,Emergency, 
+912,Georgia,E
+913,Kansas,C
+914,New York,E
+915,Texas,C/M
+916,California,P
+917,New York,E
+918,Oklahoma,C
+919,North Carolina,E
+920,Wisconsin,C
+925,California,P
+928,Arizona,M
+929,New York,E
+930,Indiana,E/C
+931,Tennessee,E/C
+934,New York,E
+936,Texas,C
+937,Ohio,E
+938,Alabama,C
+939,Puerto Rico,A
+940,Texas,C
+941,Florida,E
+947,Michigan,E
+949,California,P
+951,California,P
+952,Minnesota,C
+954,Florida,E
+956,Texas,C
+959,Connecticut,E
+970,Colorado,M
+971,Oregon,P
+972,Texas,C
+973,New Jersey,E
+978,Massachusetts,E
+979,Texas,C
+980,North Carolina,E
+984,North Carolina,E
+985,Louisiana,C
+986,Idaho,M/P
+989,Michigan,E

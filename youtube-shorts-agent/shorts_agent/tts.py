@@ -6,6 +6,7 @@ Fallback: `espeak-ng` (offline, robotic) with estimated word timings.
 from __future__ import annotations
 
 import asyncio
+import os
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -54,7 +55,8 @@ def estimate_word_timings(text: str, duration: float, lead: float = 0.05) -> lis
 async def _edge(text: str, voice: str, out: Path, rate: str) -> list[Word]:
     import edge_tts
 
-    comm = edge_tts.Communicate(text, voice, rate=rate, boundary="WordBoundary")
+    proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy") or None  # aiohttp ignores env proxies
+    comm = edge_tts.Communicate(text, voice, rate=rate, boundary="WordBoundary", proxy=proxy)
     words: list[Word] = []
     with open(out, "wb") as f:
         async for chunk in comm.stream():

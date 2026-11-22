@@ -1,0 +1,19 @@
+{
+  "title": "Octopus Facts That Sound Fake",
+  "primary_keyword": "octopus facts",
+  "hook": "An octopus has three hearts, and that's not even the weirdest part.",
+  "beats": [
+    {"narration": "An octopus has three hearts, and that's not even the weirdest part.", "on_screen_text": "3 hearts?!", "visual_query": "octopus underwater"},
+    {"narration": "Two hearts pump blood to the gills. The third pumps it to the rest of the body.", "on_screen_text": "Two for the gills", "visual_query": "coral reef fish"},
+    {"narration": "Their blood is blue, because it uses copper instead of iron to carry oxygen.", "on_screen_text": "Blue blood", "visual_query": "deep blue ocean"},
+    {"narration": "About two thirds of their neurons sit in their arms, so each arm can taste and react on its own.", "on_screen_text": "Arms that think", "visual_query": "octopus tentacles"},
+    {"narration": "And the weirdest part? When an octopus swims, the heart that feeds its body actually stops beating.", "on_screen_text": "The heart stops", "visual_query": "octopus swimming"},
+    {"narration": "That's why they'd rather crawl. Which octopus fact surprised you most?", "on_screen_text": "Which one got you?", "visual_query": "ocean floor"}
+  ],
+  "cta_question": "Which octopus fact surprised you most?",
+  "description_body": "Octopus facts that sound fake but are true: three hearts, blue copper-based blood, and arms packed with neurons.",
+  "tags": ["octopus facts", "ocean facts", "animal facts", "marine biology", "sea creatures"],
+  "hashtags": ["octopus", "animalfacts", "oceanlife"],
+  "pinned_comment": "Three hearts or thinking arms: which is the more impressive superpower? 🐙",
+  "category_id": "15"
+}

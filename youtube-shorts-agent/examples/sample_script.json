@@ -1,19 +1,61 @@
 {
   "title": "Octopus Facts That Sound Fake",
   "primary_keyword": "octopus facts",
+  "character_name": "Ollie",
+  "character_look": "a purple cartoon octopus with big googly eyes, pink cheeks and a tiny yellow sailor cap",
   "hook": "An octopus has three hearts, and that's not even the weirdest part.",
   "beats": [
-    {"narration": "An octopus has three hearts, and that's not even the weirdest part.", "on_screen_text": "3 hearts?!", "visual_query": "octopus underwater"},
-    {"narration": "Two hearts pump blood to the gills. The third pumps it to the rest of the body.", "on_screen_text": "Two for the gills", "visual_query": "coral reef fish"},
-    {"narration": "Their blood is blue, because it uses copper instead of iron to carry oxygen.", "on_screen_text": "Blue blood", "visual_query": "deep blue ocean"},
-    {"narration": "About two thirds of their neurons sit in their arms, so each arm can taste and react on its own.", "on_screen_text": "Arms that think", "visual_query": "octopus tentacles"},
-    {"narration": "And the weirdest part? When an octopus swims, the heart that feeds its body actually stops beating.", "on_screen_text": "The heart stops", "visual_query": "octopus swimming"},
-    {"narration": "That's why they'd rather crawl. Which octopus fact surprised you most?", "on_screen_text": "Which one got you?", "visual_query": "ocean floor"}
+    {
+      "narration": "An octopus has three hearts, and that's not even the weirdest part.",
+      "on_screen_text": "3 hearts?!",
+      "visual_query": "octopus underwater",
+      "scene": "Ollie juggling three heart-shaped balloons with two arms, eyes popping, sweating in panic."
+    },
+    {
+      "narration": "Two hearts pump blood to the gills. The third pumps it to the rest of the body.",
+      "on_screen_text": "Two for the gills",
+      "visual_query": "coral reef fish",
+      "scene": "Ollie as a construction foreman blowing a whistle at two little hearts in hard hats marching toward a 'GILLS' sign, while a third heart heads to 'BODY'."
+    },
+    {
+      "narration": "Their blood is blue, because it uses copper instead of iron to carry oxygen.",
+      "on_screen_text": "Blue blood",
+      "visual_query": "deep blue ocean",
+      "scene": "Ollie happily sipping a juice box labelled 'Cu' through a straw, dripping blue drops."
+    },
+    {
+      "narration": "About two thirds of their neurons sit in their arms, so each arm can taste and react on its own.",
+      "on_screen_text": "Arms that think",
+      "visual_query": "octopus tentacles",
+      "scene": "Ollie at an underwater picnic, each arm holding a different snack: ice cream, a lollipop, cheese, as if every arm is tasting on its own."
+    },
+    {
+      "narration": "And the weirdest part? When an octopus swims, the heart that feeds its body actually stops beating.",
+      "on_screen_text": "The heart stops",
+      "visual_query": "octopus swimming",
+      "scene": "Ollie zooming through open water with dizzy spiral eyes while the heart on his belly naps in a bed, snoring 'Zzz'."
+    },
+    {
+      "narration": "That's why they'd rather crawl. Which octopus fact surprised you most?",
+      "on_screen_text": "Which one got you?",
+      "visual_query": "ocean floor",
+      "scene": "Ollie lounging in a striped deckchair next to a 'NO SWIM' sign, wearing a smug look, holding up a big question mark."
+    }
   ],
   "cta_question": "Which octopus fact surprised you most?",
   "description_body": "Octopus facts that sound fake but are true: three hearts, blue copper-based blood, and arms packed with neurons.",
-  "tags": ["octopus facts", "ocean facts", "animal facts", "marine biology", "sea creatures"],
-  "hashtags": ["octopus", "animalfacts", "oceanlife"],
+  "tags": [
+    "octopus facts",
+    "ocean facts",
+    "animal facts",
+    "marine biology",
+    "sea creatures"
+  ],
+  "hashtags": [
+    "octopus",
+    "animalfacts",
+    "oceanlife"
+  ],
   "pinned_comment": "Three hearts or thinking arms: which is the more impressive superpower? 🐙",
   "category_id": "15"
 }

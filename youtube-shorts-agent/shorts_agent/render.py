@@ -116,7 +116,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 pieces.append(f"{highlight}{t}{white}" if j == i else t)
             pop = r"\fscx85\fscy85\t(0,90,\fscx100\fscy100)" if i == 0 else ""
             events.append(f"Dialogue: 2,{_ass_time(start)},{_ass_time(end)},Caption,,0,0,0,,"
-                          rf"{{\pos({W // 2 - 40},1180){pop}}}" + " ".join(pieces))
+                          rf"{{\pos({W // 2 - 40},1460){pop}}}" + " ".join(pieces))
     return header + "\n".join(events) + "\n"
 
 
@@ -130,8 +130,34 @@ def build_srt(words: list[tts.Word]) -> str:
 
 # ------------------------------------------------------------------- video --
 
+def _cartoon_segment(bg_png: Path | None, char_png: Path, dur: float, index: int, seed_query: str,
+                     work: Path, out: Path) -> None:
+    """Still background with a slow push-in, character popping in from below then bobbing and wobbling."""
+    if bg_png is None:
+        bg_png = visuals.gradient_clip(seed_query, dur, work / f"bg_{index:02d}_src.mp4")
+        bg_in = ["-stream_loop", "-1", "-i", str(bg_png)]
+    else:
+        bg_in = ["-loop", "1", "-framerate", str(FPS), "-i", str(bg_png)]
+    d = f"{dur:.3f}"
+    direction = 1 if index % 2 == 0 else -1  # alternate the sway so cuts feel different
+    filt = (
+        f"[0:v]scale={int(W * 1.10)}:{int(H * 1.10)},"
+        f"crop={W}:{H}:x='(iw-ow)/2+{direction}*(iw-ow)/2*t/{d}':y='(ih-oh)/2*(1-t/{d})',"
+        f"fps={FPS},format=yuv420p[bg];"
+        f"[1:v]format=rgba,scale=820:820,"
+        f"rotate=a='{direction}*0.06*sin(2*PI*t*0.8)':c=none:ow='hypot(iw,ih)':oh=ow[ch];"
+        f"[bg][ch]overlay=x='(W-w)/2+{direction}*14*sin(2*PI*t*0.5)':"
+        f"y='420+22*sin(2*PI*t*1.4)+if(lt(t,0.28),(1-t/0.28)*(1-t/0.28)*900,0)':"
+        f"shortest=1,format=yuv420p[v]"
+    )
+    _ff([*bg_in, "-loop", "1", "-framerate", str(FPS), "-i", str(char_png), "-filter_complex", filt,
+         "-map", "[v]", "-t", d, "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-r", str(FPS),
+         str(out)])
+
+
 def build_short(script: ShortScript, run_dir: Path, *, voice: str, font: str,
-                pexels_key: str | None = None, music: Path | None = None, log=print) -> dict:
+                pexels_key: str | None = None, music: Path | None = None,
+                art: list[tuple[Path | None, Path]] | None = None, log=print) -> dict:
     work = run_dir / "work"
     work.mkdir(parents=True, exist_ok=True)
 
@@ -164,9 +190,14 @@ def build_short(script: ShortScript, run_dir: Path, *, voice: str, font: str,
     segments, sources = [], []
     for i, (beat, (start, end, _)) in enumerate(zip(script.beats, headlines)):
         dur = end - start
+        seg = work / f"seg_{i:02d}.mp4"
+        if art:
+            _cartoon_segment(art[i][0], art[i][1], dur, i, beat.visual_query, work, seg)
+            sources.append("cartoon")
+            segments.append(seg)
+            continue
         src, kind = visuals.background_for_beat(beat.visual_query, dur, work, i, pexels_key, used)
         sources.append(kind)
-        seg = work / f"seg_{i:02d}.mp4"
         vf = (f"scale={int(W * 1.12)}:{int(H * 1.12)}:force_original_aspect_ratio=increase,"
               f"crop={W}:{H}:x='(iw-ow)*t/{dur:.3f}':y='(ih-oh)/2',fps={FPS},"
               "eq=brightness=-0.07:saturation=1.12,format=yuv420p")

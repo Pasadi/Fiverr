@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -139,9 +140,20 @@ def step_create(s: Settings, args, report: dict) -> Path:
     }
     (run_dir / "metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
 
+    art_pngs = None
+    if args.visuals == "cartoon":
+        from . import art
+
+        art_dir = run_dir / "art"
+        if args.art_dir:
+            shutil.copytree(args.art_dir, art_dir, dirs_exist_ok=True)
+        log("Drawing cartoon scenes...")
+        art_pngs = art.generate_art(s.claude_model, sc, art_dir, log=log)
+
     log("Rendering video...")
     info = render.build_short(sc, run_dir, voice=s.tts_voice, font=s.caption_font,
-                              pexels_key=s.pexels_api_key, music=Path(args.music) if args.music else None, log=log)
+                              pexels_key=s.pexels_api_key if args.visuals == "stock" else None,
+                              music=Path(args.music) if args.music else None, art=art_pngs, log=log)
     log(f"Done: {info['video']} ({info['duration_s']}s)")
     return run_dir
 
@@ -203,6 +215,9 @@ def build_parser() -> argparse.ArgumentParser:
         sp.add_argument("--research", help="reuse a saved research_*.json instead of re-querying")
         sp.add_argument("--count", type=int, default=1, help="make Shorts for the top N niches")
         sp.add_argument("--script-file", help="use an existing script.json instead of calling Claude")
+        sp.add_argument("--visuals", choices=["cartoon", "stock", "gradient"], default="cartoon",
+                        help="cartoon: Claude-drawn character scenes (default); stock: Pexels footage; gradient: plain")
+        sp.add_argument("--art-dir", help="reuse SVG art from a previous run's art/ folder (or examples/)")
         sp.add_argument("--music", help="optional background music file (mixed quietly under the voice)")
         sp.add_argument("-i", "--interactive", action="store_true", help="choose niches and approve scripts yourself")
 

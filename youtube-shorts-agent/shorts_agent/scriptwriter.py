@@ -20,11 +20,14 @@ class Beat(BaseModel):
     narration: str
     on_screen_text: str
     visual_query: str
+    scene: str = ""  # the cartoon gag for this beat
 
 
 class ShortScript(BaseModel):
     title: str
     primary_keyword: str
+    character_name: str = "Pip"
+    character_look: str = "a small round cartoon mascot with big eyes"
     hook: str
     beats: list[Beat] = Field(min_length=3)
     cta_question: str
@@ -45,6 +48,8 @@ SCRIPT_SCHEMA = {
     "properties": {
         "title": {"type": "string", "description": "Curiosity-driven, keyword-first title, max 70 chars, no hashtags"},
         "primary_keyword": {"type": "string", "description": "The main search phrase this Short should rank for"},
+        "character_name": {"type": "string", "description": "Short, catchy name of the cartoon character who stars in every scene"},
+        "character_look": {"type": "string", "description": "One-sentence visual design: species/object, colours, signature accessory"},
         "hook": {"type": "string", "description": "The first spoken sentence (also beats[0].narration's opening)"},
         "beats": {
             "type": "array",
@@ -54,8 +59,9 @@ SCRIPT_SCHEMA = {
                     "narration": {"type": "string", "description": "Spoken words for this beat (1-2 short sentences)"},
                     "on_screen_text": {"type": "string", "description": "2-5 word headline shown on screen"},
                     "visual_query": {"type": "string", "description": "2-4 word stock-footage search query"},
+                    "scene": {"type": "string", "description": "The cartoon gag: what the character is doing, wearing or holding, and the funny twist, in one or two sentences"},
                 },
-                "required": ["narration", "on_screen_text", "visual_query"],
+                "required": ["narration", "on_screen_text", "visual_query", "scene"],
                 "additionalProperties": False,
             },
         },
@@ -66,7 +72,7 @@ SCRIPT_SCHEMA = {
         "pinned_comment": {"type": "string", "description": "First comment that sparks replies (question, poll-style A/B choice)"},
         "category_id": {"type": "string", "enum": list(CATEGORIES)},
     },
-    "required": ["title", "primary_keyword", "hook", "beats", "cta_question", "description_body",
+    "required": ["title", "primary_keyword", "character_name", "character_look", "hook", "beats", "cta_question", "description_body",
                  "tags", "hashtags", "pinned_comment", "category_id"],
     "additionalProperties": False,
 }
@@ -80,6 +86,8 @@ How a strong Short is built:
 - End by asking the comment question naturally in the narration; the same question goes in cta_question.
 - Every factual statement must be accurate and widely verifiable. If a popular "fact" is a myth, either skip it or debunk it. Never invent statistics, studies, or quotes.
 - Search optimisation: put the primary keyword (a phrase from the real autocomplete data you are given) at the start of the title, say it out loud in the first beat, and use it in description_body and tags. Titles create curiosity without clickbait that the video doesn't deliver.
+- Visuals are a cartoon. Invent one character who stars in every scene: ideally the topic itself made into a character (an octopus for octopus facts, a nervous piggy bank for money tips, a tiny planet for space facts), with a signature accessory that makes them memorable.
+- For each beat, write a scene: the character acting out that exact line, so the picture matches what's being said, with a funny twist (an absurd prop, an exaggerated reaction, a visual pun, a role swap). Example for "the octopus has three hearts": the octopus juggling three tiny heart-shaped balloons, sweating nervously. Each gag should be different and drawable as a simple flat illustration.
 - visual_query values are generic stock-footage searches (e.g. "deep ocean jellyfish", "city night timelapse"), never names of real people or brands.
 - Don't copy titles or scripts from the competitor examples; use them only to understand what the audience responds to."""
 

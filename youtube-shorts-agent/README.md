@@ -10,10 +10,15 @@ An end-to-end pipeline that:
    description, tags, hashtags and a pinned-comment prompt. It works from real YouTube
    autocomplete searches and the best-performing competitor titles.
 3. **Makes the voiceover**: natural neural voice via `edge-tts`, with timings for every word.
-4. **Renders the video**: 1080×1920, 30 fps, H.264/AAC. Stock footage from Pexels for each beat
-   (or animated gradients), word-by-word highlighted captions, a headline per beat, a
-   progress bar, and optional background music.
-5. **Publishes it**: uploads to your channel with the title, description and tags, uploads an
+4. **Draws the visuals**: Claude invents a recurring cartoon character for the topic (for example
+   *Ollie*, a purple octopus in a sailor cap, for octopus facts). For every line of the script it
+   draws Ollie acting out exactly what's being said, with a funny twist: juggling three heart
+   balloons for "three hearts", sipping a juice box labelled *Cu* for "copper blood", and so on.
+   The art is SVG drawn by Claude, so no extra image API or key is needed.
+5. **Renders the video**: 1080×1920, 30 fps, H.264/AAC. The character pops in, bobs and sways
+   over each scene, with word-by-word highlighted captions, a headline per beat, a progress bar,
+   and optional background music. Use `--visuals stock` for Pexels footage instead.
+6. **Publishes it**: uploads to your channel with the title, description and tags, uploads an
    SRT caption track (YouTube indexes it for search), posts the engagement comment, and adds
    the video to a playlist for the niche.
 
@@ -32,7 +37,9 @@ An end-to-end pipeline that:
 
 ## Setup
 
-Requires Python 3.10+ and `ffmpeg` (with libass, which most builds include).
+Requires Python 3.10+ and `ffmpeg` (with libass, which most builds include). The SVG art is rendered with
+`cairosvg`, which needs the Cairo library (`brew install cairo`, `apt install libcairo2`; on Windows
+install GTK3 runtime or Playwright's Chromium, which is used as a fallback).
 
 ```bash
 cd youtube-shorts-agent
@@ -61,9 +68,8 @@ Get one at https://console.anthropic.com/ and set `ANTHROPIC_API_KEY` in `.env`.
 > (https://support.google.com/youtube/contact/yt_api_form). Until it's approved, upload with
 > `--privacy private` and switch videos to public in YouTube Studio.
 
-### 4. Optional: Pexels key (real footage)
-A free key from https://www.pexels.com/api/ goes in `PEXELS_API_KEY`. Without it you get animated
-gradient backgrounds.
+### 4. Optional: Pexels key (only for `--visuals stock`)
+A free key from https://www.pexels.com/api/ goes in `PEXELS_API_KEY`.
 
 ## Usage
 
@@ -86,6 +92,12 @@ python -m shorts_agent create --research output/research_20261122_120000.json --
 # Make a Short for a niche you choose
 python -m shorts_agent create --niche "octopus facts"
 
+# Stock footage instead of cartoons
+python -m shorts_agent create --visuals stock
+
+# Re-render using art from an earlier run (no new Claude art calls)
+python -m shorts_agent create --script-file output/<run>/script.json --art-dir output/<run>/art
+
 # Upload a rendered Short
 python -m shorts_agent upload output/20261122_194200_octopus-facts --privacy public
 
@@ -95,13 +107,13 @@ python -m shorts_agent run --interactive
 python -m shorts_agent run --publish-at 2026-12-01T15:00:00Z   # scheduled premiere
 ```
 
-Each run folder contains `script.json`, `metadata.json` (title, description, tags),
+Each run folder contains `script.json`, `art/` (character and scene SVGs and PNGs), `metadata.json` (title, description, tags),
 `captions.srt`/`.ass`, `short.mp4`, and a `work/` folder of intermediate files.
 `output/history.json` keeps track of published titles so Claude doesn't repeat an angle.
 
 ### Try it without any API keys
 ```bash
-python -m shorts_agent create --niche "octopus facts" --script-file examples/sample_script.json
+python -m shorts_agent create --niche "octopus facts" --script-file examples/sample_script.json --art-dir examples/octopus_art
 ```
 
 ### Post every day
@@ -114,8 +126,9 @@ Use cron (or Task Scheduler on Windows), for example every day at 15:00:
 - **YouTube Data API**: 10,000 units/day by default. Research costs about 100 units per niche
   (15 niches ≈ 1,500). Uploads cost a lot more (video insert, captions 400, comment 50,
   playlist 50–100), so only a few uploads fit in a day. You can ask Google for more quota.
-- **Claude**: one structured-output call per script (default model `claude-opus-5-5`; set
-  `CLAUDE_MODEL` to change it). Requests use server-side fallback, so a request declined by a
+- **Claude**: per Short, one call for the script, one for the character, and one per scene
+  (6–8, run in parallel). The default model is `claude-opus-5-5`; set `CLAUDE_MODEL` to change it.
+  The SVG art is the largest part of the cost. Requests use server-side fallback, so a request declined by a
   safety filter is retried on a fallback model automatically.
 - **edge-tts, Pexels and autocomplete** are free.
 
@@ -135,6 +148,7 @@ shorts_agent/
   scriptwriter.py Claude: niche brainstorming + structured script generation
   tts.py          edge-tts voiceover with word timings (espeak-ng fallback)
   visuals.py      Pexels footage / gradient backgrounds
+  art.py          Claude-drawn cartoon character + scenes (SVG → PNG, sanitised)
   render.py       ffmpeg assembly, animated ASS captions, SRT
   uploader.py     OAuth, upload, captions, comment, playlist
   cli.py          research / create / upload / run commands
